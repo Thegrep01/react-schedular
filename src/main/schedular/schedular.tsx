@@ -11,11 +11,16 @@ export default function Schedular() {
 
     return (
         <>
-            {loading ? <CircularProgress />
+            {loading ?
+                <CircularProgress />
                 : <Box display='flex' justifyContent='space-evenly' flexWrap='wrap' width='100%'>
-                    {data.days.map((day: IDay) => (<Day day={day.name} />))}
+                    {data.days.map(renderDay)}
                 </Box>
             }
         </>
     );
+}
+
+function renderDay(day: IDay, index: number) {
+    return <Day key={index} day={day.name} lessons={day.lessons} />;
 }

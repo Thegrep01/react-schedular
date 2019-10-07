@@ -17,3 +17,14 @@ export function formatDay(dayNum: number): string {
     };
     return Days[dayNum];
 }
+
+export function getLessonTime(index: number) {
+    const LessonsTime = {
+        1: '8:30 - 9:50',
+        2: '10:10 - 11:30',
+        3: '12:00 - 13:20',
+        4: '13:40 - 15:00',
+    };
+
+    return LessonsTime[index];
+}

@@ -1,9 +1,9 @@
 export interface ILessons {
     name: string;
-    dayIndex: number;
+    dayIndex?: number;
     teacher: string;
     type: LessonType;
-    pclassRoom: string;
+    classRoom: string;
     index: number;
 }
 

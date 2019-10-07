@@ -1,4 +1,4 @@
-import { formatDay, formatTime } from 'src/common/utils/formatters';
+import { formatDay, formatTime, getLessonTime } from 'src/common/utils/formatters';
 
 describe('Time formatter tests', () => {
     it('should return 11', () => {
@@ -17,5 +17,12 @@ describe('Day tests', () => {
         const spy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate as any);
         expect(formatDay(new Date().getDay())).toBe('Mon');
         spy.mockRestore();
+    });
+});
+
+
+describe('Lesson time', () => {
+    it('should return 8:30 - 9:50', () => {
+        expect(getLessonTime(1)).toBe('8:30 - 9:50');
     });
 });
