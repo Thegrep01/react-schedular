@@ -1,16 +1,21 @@
 import React from 'react';
 import Day from 'src/common/components/day/day';
-import { Box } from '@material-ui/core';
+import { Box, CircularProgress } from '@material-ui/core';
+import { useQuery } from '@apollo/react-hooks';
+import { ALL_DAYS } from 'src/grahql';
+import { IDay } from 'src/common/types/day.type';
 
 export default function Schedular() {
+
+    const { loading, data } = useQuery(ALL_DAYS);
+
     return (
-        <Box display='flex' justifyContent='space-evenly' flexWrap='wrap' width='100%'>
-            <Day day='Monday' />
-            <Day day='Tuesday' />
-            <Day day='Wednesday' />
-            <Day day='Thursday' />
-            <Day day='Friday' />
-            <Day day='Saturday' />
-        </Box>
+        <>
+            {loading ? <CircularProgress />
+                : <Box display='flex' justifyContent='space-evenly' flexWrap='wrap' width='100%'>
+                    {data.days.map((day: IDay) => (<Day day={day.name} />))}
+                </Box>
+            }
+        </>
     );
 }
